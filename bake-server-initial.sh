@@ -20,6 +20,15 @@ rm /images/debian-squeeze.zip
 mount -o loop,offset=80740352 "/images/debian-squeeze/debian6-19-04-2012/debian6-19-04-2012.img" /mnt &>> $log
 echo "Mounted Debian Squeeze image at /mnt"
 
-cp /usr/bin/qemu-arm-static /mnt/usr/bin/
+mkdir /chroot
 
-# You can `chroot /mnt` to load the emulated system!
+mkdir /chroot/debian-squeeze
+cp -r /mnt/. /chroot/debian-squeeze
+umount /mnt
+mount -o bind /dev /chroot/debian-squeeze/dev
+mount -o bind /proc /chroot/debian-squeeze/proc
+mount -o bind /sys /chroot/debian-squeeze/sys
+
+cp /usr/bin/qemu-arm-static /chroot/debian-squeeze/usr/bin/
+
+# You can `chroot /chroot/debian-squeeze` to load the emulated system!
