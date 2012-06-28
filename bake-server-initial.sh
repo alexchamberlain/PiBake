@@ -32,3 +32,5 @@ mount -o bind /sys /chroot/debian-squeeze/sys
 cp /usr/bin/qemu-arm-static /chroot/debian-squeeze/usr/bin/
 
 # You can `chroot /chroot/debian-squeeze` to load the emulated system!
+# apt-get update works, but you have to run it twice
+# apt-get upgrade -y fails...
