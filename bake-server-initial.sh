@@ -25,9 +25,10 @@ mkdir /chroot
 mkdir /chroot/debian-squeeze
 cp -r /mnt/. /chroot/debian-squeeze
 umount /mnt
-mount -o bind /dev /chroot/debian-squeeze/dev
-mount -o bind /proc /chroot/debian-squeeze/proc
-mount -o bind /sys /chroot/debian-squeeze/sys
+mount -o bind /dev     /chroot/debian-squeeze/dev
+mount -o bind /dev/pts /chroot/debian-squeeze/dev/pts
+mount -t proc none     /chroot/debian-squeeze/proc
+mount -o bind /sys     /chroot/debian-squeeze/sys
 
 cp /usr/bin/qemu-arm-static /chroot/debian-squeeze/usr/bin/
 
